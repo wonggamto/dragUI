@@ -1,0 +1,62 @@
+{
+  "name": "@moten/ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/vue3/moten.umd.cjs",
+  "module": "./dist/vue3/moten.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3/moten.js",
+      "require": "./dist/vue3/moten.umd.cjs"
+    },
+    "./style": {
+      "import": "./dist/vue3/style.css",
+      "require": "./dist/vue3/style.css"
+    },
+    "./vue2": {
+      "import": "./dist/vue2/moten.js",
+      "require": "./dist/vue2/moten.umd.cjs"
+    },
+    "./vue2/style": {
+      "import": "./dist/vue2/style.css",
+      "require": "./dist/vue2/moten.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm clear:dist && pnpm build:vue3 && pnpm build:vue2",
+    "build:vue2": "pnpm switch:vue2 && vue-tsc -b && vite build",
+    "build:vue3": "pnpm switch:vue3 && vue-tsc -b && vite build",
+    "switch:vue3": "vue-demi-switch 3 vue3",
+    "switch:vue2": "vue-demi-switch 2 vue2",
+    "preview": "vite preview",
+    "clear": "rimraf dist ./node_modules",
+    "clear:dist": "rimraf dist"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.7.2",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@types/node": "^20.14.9",
+    "rimraf": "^5.0.7",
+    "vue": "^3.4.29",
+    "vue-demi": "^0.14.8",
+    "vue2": "npm:vue@~2.6.14",
+    "vue2.7": "npm:vue@~2.7.16",
+    "vue3": "npm:vue@~3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-plugin-vue2": "^2.0.3",
+    "vue-tsc": "^2.0.21"
+  }
+}

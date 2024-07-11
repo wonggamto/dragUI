@@ -1,0 +1,59 @@
+{
+  "name": "moten",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "packageManager": "pnpm@8.14.3",
+  "engines": {
+    "node": ">=21",
+    "pnpm": ">= 8"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "ir": "pnpm i -r",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ui": "pnpm -F @moten/ui dev",
+    "ui:build": "pnpm -F @moten/ui build",
+    "clear": "rimraf --glob ./node_modules ./packages/**/node_modules ./packages/**/dist",
+    "play:vue3": "pnpm -F @moten/ui build && pnpm -F @moten/playground-vue3 dev",
+    "play:vue2": "pnpm -F @moten/ui build && pnpm -F @moten/playground-vue2 dev",
+    "prepare": "husky",
+    "lint": "node ./scripts/lint.js"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-vinyl"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": "pnpm lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "pnpm": {
+    "packageExtensions": {
+      "vue-template-compiler": {
+        "devDependencies": {
+          "vue": "^2.7.16"
+        }
+      },
+      "vue-template-compiler@2.7.16": {
+        "devDependencies": {
+          "vue": "^2.7.16"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "commitizen": "^4.3.0",
+    "cz-vinyl": "^2.5.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "rimraf": "^5.0.7",
+    "zx": "^8.1.4"
+  }
+}
