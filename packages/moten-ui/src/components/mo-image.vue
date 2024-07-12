@@ -22,6 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
+  <h1 class="text-[#50d71e]">tailwind测试</h1>
   <img :src="src" class="image" alt="" @click="show()">
 </template>
 
